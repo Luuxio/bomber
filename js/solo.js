@@ -70,6 +70,26 @@ for (let y = 0; y < NUM_ROWS; y++) {
 }
 pourcentage_destructibles();
 
+// Fonction pour faire apparaître les power-ups
+const spawnPowerups = (count = 3) => {
+    powerups.length = 0;
+    const types = ["life", "range", "timer"];
+    let attempts = 0;
+    while (powerups.length < count && attempts < 200) {
+        attempts++;
+        const x = Math.floor(Math.random() * NUM_COLS);
+        const y = Math.floor(Math.random() * NUM_ROWS);
+        if (
+            map[y] && map[y][x] === 0 &&
+            !(x === initialPosition[0] && y === initialPosition[1]) &&
+            !powerups.some(p => p.x === x && p.y === y)
+        ) {
+            const type = types[Math.floor(Math.random() * types.length)];
+            powerups.push(new PowerUp({ x, y, type, tile_size: TILE_SIZE }));
+        }
+    }
+}
+
 // ----------------- Dessin de la map -----------------
 const drawMap = () => {
     for (let y = 0; y < NUM_ROWS; y++) {
@@ -209,23 +229,3 @@ window.addEventListener("keydown", (e) => {
             break;
     }
 });
-
-// Fonction pour faire apparaître les power-ups
-const spawnPowerups = (count = 3) => {
-    powerups.length = 0;
-    const types = ["life", "range", "timer"];
-    let attempts = 0;
-    while (powerups.length < count && attempts < 200) {
-        attempts++;
-        const x = Math.floor(Math.random() * NUM_COLS);
-        const y = Math.floor(Math.random() * NUM_ROWS);
-        if (
-            map[y] && map[y][x] === 0 &&
-            !(x === initialPosition[0] && y === initialPosition[1]) &&
-            !powerups.some(p => p.x === x && p.y === y)
-        ) {
-            const type = types[Math.floor(Math.random() * types.length)];
-            powerups.push(new PowerUp({ x, y, type, tile_size: TILE_SIZE }));
-        }
-    }
-}
