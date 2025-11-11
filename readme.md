@@ -180,17 +180,17 @@ Ou via le menu **Options** pour les contrôles.
 Dans le code il existe 3 canvas :
 
 -   `Canvas Map` :
-    Contient : Murs fixes + murs destructibles
-    Rédessiné : Rarement (seulement quand un mur est détruit)
-    Raison : Statique, pas besoin de redessiner chaque frame
+    -   Contient : Murs fixes + murs destructibles
+    -   Rédessiné : Rarement (seulement quand un mur est détruit)
+    -   Raison : Statique, pas besoin de redessiner chaque frame
 -   `Canvas Joueurs/Bombes` :
-    Contient : Joueurs + bombes
-    Rédessiné : Chaque frame (60fps environ)
-    Raison : En constant mouvement
+    -   Contient : Joueurs + bombes
+    -   Rédessiné : Chaque frame (60fps environ)
+    -   Raison : En constant mouvement
 -   `Canvas Explosions`:
-    Contient : Les oranges d'explosion uniquement
-    Rédessiné : Lors d'une explosion, puis effacé après 200ms
-    Raison : Séparation des effets visuels, plus facile à gérer
+    -   Contient : Les oranges d'explosion uniquement
+    -   Rédessiné : Lors d'une explosion, puis effacé après 200ms
+    -   Raison : Séparation des effets visuels, plus facile à gérer
 
 ---
 
