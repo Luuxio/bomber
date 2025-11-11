@@ -1,0 +1,116 @@
+:root {
+    --bg-start: #0ea5f9;
+    --bg-mid: #7c3aed;
+    --bg-end: #6d28d9;
+    --glass: rgba(255, 255, 255, 0.06);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: radial-gradient(900px 500px at 10% 10%, rgba(99, 102, 241, 0.1), transparent 12%),
+        linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    gap: 16px;
+}
+
+/* Titre du jeu */
+h1 {
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Conteneur du jeu */
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 520px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.32), inset 0 -2px 0 var(--glass);
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+}
+
+/* Canvas - empilés les uns sur les autres */
+#map,
+#game,
+#explosion {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Lives display */
+#lives {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    z-index: 10;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Bouton retour */
+.back-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.28);
+    transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.36);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(2, 6, 23, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+    .game-container {
+        width: 90vw;
+        height: 78vw;
+        max-width: 600px;
+        max-height: 520px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #lives {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}

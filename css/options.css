@@ -1,0 +1,147 @@
+:root {
+    --bg-start: #0ea5f9;
+    --bg-mid: #7c3aed;
+    --bg-end: #6d28d9;
+    --btn-start: #3b82f6;
+    --btn-mid: #6366f1;
+    --btn-end: #8b5cf6;
+    --glass: rgba(255, 255, 255, 0.06);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    color: #fff;
+    background: radial-gradient(900px 400px at 10% 10%, rgba(99, 102, 241, 0.08), transparent 12%),
+        linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    text-align: center;
+}
+
+/* Conteneur central */
+.container {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.32), inset 0 -2px 0 var(--glass);
+    backdrop-filter: blur(6px);
+}
+
+/* Titre */
+h1,
+h2 {
+    margin: 0 0 14px 0;
+    font-weight: 600;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* Contrôles empilés : full width et espacement via gap */
+.control {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* important pour que les enfants prennent toute la largeur */
+    gap: 12px;
+    /* espace entre chaque contrôle */
+    margin: 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Les labels peuvent rester en haut du contrôle (optionnel) */
+.control>label {
+    align-self: flex-start;
+    margin-left: 4px;
+    font-size: 14px;
+    opacity: 0.95;
+}
+
+/* Inputs, selects et buttons prennent maintenant la largeur du contrôle */
+input[type="text"],
+input[type="number"],
+select,
+.control>button {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.28), inset 0 -1px 0 var(--glass);
+    outline: none;
+    transition: box-shadow .12s ease, transform .12s ease, filter .12s ease;
+    box-sizing: border-box;
+}
+
+/* Supprime margin-top redondant sur les boutons (espacement géré par .control gap) */
+button {
+    margin-top: 0;
+}
+
+/* Focus / Hover */
+input:focus,
+select:focus {
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.36);
+    transform: translateY(-2px);
+}
+
+/* Bouton principal */
+button {
+    background: linear-gradient(90deg, var(--btn-start) 0%, var(--btn-mid) 50%, var(--btn-end) 100%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.28), inset 0 -2px 0 var(--glass);
+    transition: transform .16s ease, box-shadow .16s ease, filter .12s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.36);
+    filter: brightness(1.03);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.22);
+}
+
+/* Petite description / labels */
+label {
+    font-size: 14px;
+    opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    .control>button {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}

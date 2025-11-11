@@ -1,0 +1,106 @@
+:root {
+    --bg-start: #0ea5f9;
+    --bg-mid: #7c3aed;
+    --bg-end: #6d28d9;
+    --btn-start: #3b82f6;
+    --btn-mid: #6366f1;
+    --btn-end: #8b5cf6;
+    --glass: rgba(255, 255, 255, 0.06);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+    color: #fff;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(99, 102, 241, 0.12), transparent 12%),
+        linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+/* Titre */
+h1 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    letter-spacing: 0.4px;
+}
+
+/* Empiler les boutons et définir taille commune */
+body>button,
+/* si les boutons sont enfants directs */
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    max-width: 86vw;
+    padding: 14px 20px;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--btn-start) 0%, var(--btn-mid) 50%, var(--btn-end) 100%);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.28), inset 0 -2px 0 var(--glass);
+    transition: transform .18s ease, box-shadow .18s ease, filter .12s ease;
+    display: block;
+    margin: 8px 0;
+}
+
+/* Espace et alignement si h1 + boutons sont siblings */
+h1+button {
+    margin-top: 12px;
+}
+
+/* Hover / Active */
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.36);
+    filter: brightness(1.04);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.22);
+    filter: brightness(0.98);
+}
+
+/* Variante glass pour un look plus doux (optionnel: ajouter class="glass" sur un bouton) */
+button.glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 420px) {
+    body {
+        gap: 12px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 0.95rem;
+        width: 86vw;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+}
